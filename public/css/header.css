@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.header-nav {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    height: 80px;
+    color: white;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.filmlogo {
+    width: 120px;
+    height: auto;
+    cursor: pointer;
+}
+
+.film-link a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.film-link a:hover {
+    color: #FEB91E;
+}
+
+.profile-container {
+    position: relative;
+}
+
+.photodeprofil {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.burger-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #E8E4E4;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.nav-menu.active {
+    display: flex;
+}
+
+.nav-menu ul {
+    list-style: none;
+}
+
+.nav-menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.nav-menu li a:hover {
+    background-color: #dcdcdc;
+}
+
+.login-item {
+    background-color: #FEB91E;
+    margin: 8px;
+    border-radius: 5px;
+}
+
+.login-item a {
+    color: white !important;
+    text-align: center;
+    font-weight: bold;
+}
+
+.login-item a:hover {
+    background-color: #e5a71a !important;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 0 10px;
+}

@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS cinema_booking;
+USE cinema_booking;
 -- 1. Création de la table Film
 CREATE TABLE Film (
                       id_film INT PRIMARY KEY AUTO_INCREMENT,
