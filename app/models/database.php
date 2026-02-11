@@ -10,7 +10,6 @@ try {
 
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    // On affiche l'erreur brute envoyée par PHP
     echo "<h3>Erreur réelle :</h3>";
     die($e->getMessage());
 }

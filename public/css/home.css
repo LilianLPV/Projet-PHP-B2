@@ -1,0 +1,248 @@
+/* =========================================
+   1. BASES & RESET
+   ========================================= */
+:root {
+    --bg-color: #141414;       /* Noir profond (style Netflix) */
+    --card-bg: #1f1f1f;        /* Gris un peu plus clair pour les cartes */
+    --text-color: #ffffff;     /* Blanc */
+    --accent-color: #FEB91E;   /* Jaune Cinéma */
+    --accent-hover: #e5a50a;   /* Jaune un peu plus foncé au survol */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =========================================
+   2. HEADER / NAVBAR
+   ========================================= */
+header {
+    background-color: rgba(0, 0, 0, 0.8); /* Noir transparent */
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Reste collé en haut */
+    width: 100%;
+    z-index: 1000; /* Passe au dessus de tout */
+    backdrop-filter: blur(5px); /* Petit effet de flou classe */
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: var(--accent-color);
+}
+
+/* =========================================
+   3. HERO SECTION (L'AFFICHE GÉANTE)
+   ========================================= */
+.hero-section {
+    height: 85vh; /* Prend 85% de la hauteur de l'écran */
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    display: flex;
+    align-items: center; /* Centre verticalement */
+    margin-bottom: 40px;
+}
+
+/* Le dégradé noir par dessus l'image pour que le texte soit lisible */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+}
+
+/* Dégradé vers le bas pour fondre avec la grille */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; width: 100%; height: 100px;
+    background: linear-gradient(to top, var(--bg-color), transparent);
+}
+
+.hero-content {
+    position: relative; /* Pour passer au dessus du dégradé */
+    z-index: 10;
+    max-width: 600px;
+    padding-left: 50px; /* Marge à gauche */
+}
+
+.badge-nouveau {
+    background-color: #E50914; /* Rouge "Nouveauté" */
+    color: white;
+    padding: 5px 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    letter-spacing: 1px;
+}
+
+.hero-content h1 {
+    font-size: 4rem; /* Titre énorme */
+    margin: 15px 0;
+    line-height: 1.1;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
+
+.hero-infos {
+    font-size: 1.2rem;
+    color: #ddd;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+/* Bouton principal */
+.btn-hero {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: #000;
+    padding: 12px 35px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-hero:hover {
+    background-color: #fff;
+    transform: scale(1.05); /* Grossit légèrement */
+}
+
+/* =========================================
+   4. LA GRILLE DE FILMS
+   ========================================= */
+.films-container {
+    padding: 0 50px 50px 50px; /* Marge interne */
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.films-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--accent-color);
+    padding-left: 15px;
+}
+
+.grid-films {
+    display: grid;
+    /* Magie CSS : crée autant de colonnes que possible de 220px min */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+/* La Carte Film */
+.film-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden; /* Pour que l'image ne dépasse pas des coins ronds */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Effet au survol de la carte */
+.film-card:hover {
+    transform: translateY(-10px); /* La carte monte */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    z-index: 2;
+}
+
+.card-image {
+    height: 330px; /* Hauteur fixe pour aligner les images */
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Remplit la case sans déformer l'image */
+    transition: transform 0.5s ease;
+}
+
+/* Zoom sur l'image au survol */
+.film-card:hover .card-image img {
+    transform: scale(1.1);
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-content h3 {
+    font-size: 1.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Ajoute "..." si le titre est trop long */
+    margin-bottom: 5px;
+}
+
+/* Petit bouton "Voir" sur les cartes */
+.btn-reserver-small {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.film-card:hover .btn-reserver-small {
+    background-color: var(--accent-color);
+    color: #000;
+    border-color: var(--accent-color);
+}
+
+/* =========================================
+   5. RESPONSIVE (MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+    header { padding: 15px 20px; }
+
+    .hero-section { height: 60vh; align-items: flex-end; }
+
+    .hero-content {
+        padding-left: 20px;
+        padding-bottom: 40px;
+    }
+
+    .hero-content h1 { font-size: 2.5rem; }
+
+    .films-container { padding: 20px; }
+
+    .grid-films {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur mobile */
+        gap: 15px;
+    }
+}
