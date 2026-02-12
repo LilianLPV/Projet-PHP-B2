@@ -1,28 +1,30 @@
 <?php
-// On inclut ton header existant
 require_once __DIR__ . '/../layouts/header.php';
 ?>
-l
-<link rel="stylesheet" href="../public/css/home.css">
 
-<?php if ($heroMovie): // On vérifie qu'il y a bien un film ?>
-    <section class="hero-section" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), #000), url('assets/<?= htmlspecialchars($heroMovie['affiche']) ?>');">
-        <div class="hero-content">
-            <span class="badge-nouveau">Nouveauté</span>
-            <h1><?= htmlspecialchars($heroMovie['name']) ?></h1>
-            <p class="hero-infos">Durée :1h30 min</p>
-            <a href="film.php?id=<?= $heroMovie['id_film'] ?>" class="btn-hero">Réserver ma place</a>
+<link rel="stylesheet" href="../public/css/home.css">
+<body>
+<?php if ($homeMovie): ?>
+<section class="new-films">
+
+    <div class="new-content"
+         style="background: linear-gradient(to bottom, #151515 0%, transparent 20%, transparent 80%, #151515 100%),
+                 url('assets/<?= htmlspecialchars($homeMovie['affiche']) ?>') center/cover no-repeat;">        <div class="groupe">
+        <h1 class="title-new"><?=htmlspecialchars($homeMovie['name'])?></h1>
+
+        <a href="film.php?id=<?=$homeMovie['id_film']?>" class="btn-new"><img class="btn-reserver" src="assets/ticket-reservation.png" alt="ticket de réservation"> Réserver maintenant !</a>
         </div>
-    </section>
+ </div>
+</section>
 <?php endif; ?>
 
 
 <section class="container-films">
-    <h2>À l'affiche aussi</h2>
+    <h2 class="title-info">À l'affiche aussi !</h2>
     <div class="grid">
         <?php foreach ($allFilms as $film): ?>
 
-            <?php if ($heroMovie && $film['id_film'] == $heroMovie['id_film']) { continue; } ?>
+            <?php if ($homeMovie && $film['id_film'] == $homeMovie['id_film']) { continue; } ?>
 
             <article class="card">
                 <a href="film.php?id=<?= $film['id_film'] ?>">
@@ -31,7 +33,7 @@ l
                     </div>
                     <div class="card-body">
                         <h3><?= htmlspecialchars($film['name']) ?></h3>
-                        <span class="btn-reserver-small">Voir</span>
+                        <span class="btn-reserver-small"><img class="btn-reserver" src="assets/ticket-reservation.png" alt="ticket de réservation">Réserver !</span>
                     </div>
                 </a>
             </article>
@@ -39,3 +41,4 @@ l
         <?php endforeach; ?>
     </div>
 </section>
+</body>
