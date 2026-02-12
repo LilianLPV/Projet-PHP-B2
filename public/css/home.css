@@ -18,9 +18,12 @@ body {
 }
 
 .title-new {
-    height: 50px;
+    color: #e5a71a; /* Ton jaune moutarde */
+    font-size: 3rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9); /* Ombre noire plus forte obligatoire ici */
+    margin-bottom: 20px;
 }
-
 .btn-new {
     background-color: #e5a71a;
     color: white;
@@ -78,6 +81,9 @@ a {
 
 .card-img {
     font-weight: bold;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
     padding-top: 15px;
     display: flex;
     justify-content: center;
