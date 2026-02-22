@@ -7,6 +7,7 @@ CREATE TABLE Film (
                       description TEXT,
                       actors TEXT,
                       date DATE,
+                      realisateur TEXT,
                       affiche VARCHAR(255)
 );
 
@@ -57,3 +58,5 @@ CREATE TABLE Reservation (
                              CONSTRAINT unique_reservation UNIQUE (fk_seance, fk_seat)
 
 );
+
+
