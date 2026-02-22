@@ -1,6 +1,6 @@
 # CinéMax - Projet PHP B2
 
-Ce projet est un système de réservation de billets de cinéma développé en PHP.
+Ce projet est un système de réservation de billets de cinéma développé en PHP et rréaliser par MOLL NANS et LILIAN LE PIVER
 
 ## Prérequis
 
@@ -20,7 +20,6 @@ Téléchargez ou clonez ce projet et placez le dossier `Projet-PHP-B2` dans le r
 4. Importez d'abord le fichier : `sql/schema.sql` (Il créera la base `cinema_booking` et les tables).
 5. Importez ensuite le fichier : `sql/insert.sql` (Pour avoir des données de test).
 
-### 3. Configuration de l'environnement
 1. À la racine du projet, créez un fichier nommé `.env`.
 2. Copiez le contenu de `.env.example` dans ce nouveau fichier `.env`.
 3. Ajustez les informations selon votre configuration (par défaut avec XAMPP) :
@@ -36,6 +35,4 @@ Téléchargez ou clonez ce projet et placez le dossier `Projet-PHP-B2` dans le r
 Ouvrez votre navigateur et accédez à l'URL suivante :
 [http://localhost/Projet-PHP-B2/public/](http://localhost/Projet-PHP-B2/public/)
 
-## Sécurité appliquée
-- **Injections SQL** : Utilisation de requêtes préparées avec PDO (`prepare()` et `execute()`).
-- **Failles XSS** : Échappement systématique des données affichées via `htmlspecialchars()`.
+
