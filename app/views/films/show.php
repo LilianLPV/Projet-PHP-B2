@@ -1,44 +1,9 @@
 <?php
-// app/views/films/show.php
+
 require_once __DIR__ . '/../layouts/header.php';
 ?>
 
-    <style>
-        .film-detail-container {
-            background-color: black;
-            max-width: 1000px;
-            margin: 50px auto;
-            display: flex;
-            gap: 40px;
-            color: white;
-            padding: 20px;
-        }
-        .film-detail-img img {
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
-        .film-infos h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #e5a71a;
-        }
-        .description {
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: #ccc;
-        }
-        .btn-final {
-            background-color: #e5a71a;
-            color: black;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
-            display: inline-block;
-        }
-        .btn-final:hover { background-color: white; }
-    </style>
+<link rel="stylesheet" href="../public/css/show.css">
 
     <div class="film-detail-container">
 
@@ -56,9 +21,23 @@ require_once __DIR__ . '/../layouts/header.php';
                 <?= htmlspecialchars($film['description']) ?>
             </p>
 
-            <a href="index.php?action=reservation&id=<?= $film['id_film'] ?>" class="btn-final">
-                Confirmer la réservation
-            </a>
+            <div style="margin-top: 30px; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
+                <h3 style="color: #e5a71a; margin-top: 0;">Séances disponibles :</h3>
+
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <?php if (!empty($seances)): ?>
+                        <?php foreach ($seances as $seance): ?>
+                            <a href="index.php?action=choisir_place&id_seance=<?= $seance['id_seance'] ?>" class="btn-final" style="padding: 10px 20px; font-size: 0.9rem;">
+                                <?= date('d/m/Y à H:i', strtotime($seance['horaires'])) ?>
+                                <br>
+                                <small style="font-weight: normal;"><?= htmlspecialchars($seance['cinema']) ?></small>
+                            </a>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p style="color: #ccc;">Aucune séance programmée pour le moment.</p>
+                    <?php endif; ?>
+                </div>
+            </div>
         </div>
 
     </div>
