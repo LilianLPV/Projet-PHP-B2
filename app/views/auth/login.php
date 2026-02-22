@@ -11,7 +11,10 @@
         <div class="form-group">
             <input type="password" name="password" placeholder="Mot de passe" required>
         </div>
-
+        <div class="form-group" style="color: white; text-align: left; margin-bottom: 15px;">
+            <input type="checkbox" name="remember_me" id="remember_me">
+            <label for="remember_me">Se souvenir de moi</label>
+        </div>
         <div class="form-group">
             <input type="submit" value="Connexion" name="Submit">
         </div>

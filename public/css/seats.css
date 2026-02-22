@@ -1,0 +1,108 @@
+body {
+    background-color: #000;
+    color: white;
+    margin: 0;
+}
+
+.cinema-room {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #111;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    text-align: center;
+}
+
+
+.screen {
+    background-color: #fff;
+    height: 10px;
+    width: 80%;
+    margin: 0 auto 50px auto;
+    border-radius: 50%;
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.5);
+    position: relative;
+}
+.screen::after {
+    content: "ÉCRAN";
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #555;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.seats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.seat-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.row-letter {
+    font-weight: bold;
+    color: #e5a71a;
+    margin-right: 15px;
+    width: 20px;
+}
+
+
+.seat-checkbox { display: none; }
+
+.seat-label {
+    width: 40px;
+    height: 40px;
+    background-color: #444;
+    border-radius: 8px 8px 4px 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+    border-bottom: 3px solid #222;
+}
+
+.seat-label:hover { background-color: #666; }
+
+
+.seat-checkbox:checked + .seat-label {
+    background-color: #e5a71a;
+    color: black;
+    font-weight: bold;
+    transform: scale(1.1);
+    border-bottom: 3px solid #b38214;
+}
+
+.seat-taken {
+    background-color: #222 !important;
+    color: #555 !important;
+    cursor: not-allowed !important;
+    border-bottom: 3px solid #111 !important;
+    pointer-events: none;
+}
+
+.btn-reserver {
+    background-color: #e5a71a;
+    color: black;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+.btn-reserver:hover { background-color: white; }

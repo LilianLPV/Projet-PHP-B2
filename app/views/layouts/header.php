@@ -31,9 +31,12 @@
                 <ul>
                     <?php if (isset($_SESSION['id_user'])): ?>
 
-                        <li class="login-item" style="pointer-events: none;">
-                            <a href="#" style="color: white;">Salut, <?= htmlspecialchars($_SESSION['username']) ?></a>
+                        <li class="login-item">
+                            <a href="index.php?action=profile" style="color: white;">
+                                Mon profil (<?= htmlspecialchars($_SESSION['username']) ?>)
+                            </a>
                         </li>
+
                         <li><a href="index.php?action=mes_reservations">Mes réservations</a></li>
                         <li><hr></li>
                         <li><a href="index.php?action=logout">Déconnexion</a></li>
